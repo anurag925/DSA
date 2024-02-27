@@ -9,7 +9,7 @@ type TimeMap struct {
 	store map[string][]dataTime
 }
 
-func Constructor() TimeMap {
+func ConstructorT() TimeMap {
 	return TimeMap{
 		store: make(map[string][]dataTime),
 	}
