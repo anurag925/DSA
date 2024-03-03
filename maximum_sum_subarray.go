@@ -8,3 +8,17 @@ func maxSubArray(nums []int) int {
 	}
 	return maxSum
 }
+
+func khadensAlgo(nums []int) int {
+	maxSum, currSum := -9999999, 0
+	for _, i := range nums {
+		currSum += i
+		if currSum > maxSum {
+			maxSum = currSum
+		}
+		if currSum < 0 {
+			currSum = 0
+		}
+	}
+	return maxSum
+}
