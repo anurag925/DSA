@@ -5,7 +5,7 @@ type MyQueue struct {
 	s2 []int
 }
 
-func Constructor() MyQueue {
+func ConstructorQueueUsingStack() MyQueue {
 	return MyQueue{
 		s1: make([]int, 0),
 		s2: make([]int, 0),
