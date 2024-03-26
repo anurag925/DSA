@@ -20,3 +20,18 @@ func firstMissingPositive(nums []int) int {
 	}
 	return l + 1
 }
+
+func firstMissingPositive2(nums []int) int {
+	checkMap := make(map[int]bool)
+	for _, i := range nums {
+		if i > 0 {
+			checkMap[i] = true
+		}
+	}
+	for i := 1; i < len(nums); i++ {
+		if _, ok := checkMap[i]; !ok {
+			return i
+		}
+	}
+	return len(nums)
+}
