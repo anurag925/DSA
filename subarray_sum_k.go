@@ -1,6 +1,6 @@
 package dsa
 
-func subarraySum(nums []int, k int) int {
+func subarraySum2(nums []int, k int) int {
 
 	prefix := make([]int, len(nums))
 	sumH := make(map[int]int)
@@ -18,5 +18,28 @@ func subarraySum(nums []int, k int) int {
 		// 	}
 		// }
 	}
+	return count
+}
+
+func subarraySum(nums []int, k int) int {
+	count := 0
+	prefix := make([]int, len(nums))
+	hash := make(map[int]int)
+	prefix[0] = nums[0]
+	for i, e := range nums[1:] {
+		prefix[i] = nums[i-1] + e
+	}
+
+	for _, e := range prefix {
+		if e == k {
+			count++
+		}
+		val, ok := hash[e-k]
+		if ok {
+			count += val
+		}
+		hash[e]++
+	}
+
 	return count
 }
