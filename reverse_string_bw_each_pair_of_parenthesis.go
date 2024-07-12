@@ -9,6 +9,7 @@ func reverseParentheses(s string) string {
 				temp = append(temp, stack[len(stack)-1])
 				stack = stack[:len(stack)-1]
 			}
+			stack = stack[:len(s)-1]
 			stack = append(stack, temp...)
 			temp = make([]string, 0)
 		} else {
