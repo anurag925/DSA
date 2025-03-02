@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-class Solution {
+class SolutionN {
   // Function to find the next greater element for each element of the array.
   public static long[] nextLargerElement(long[] arr, int n) {
     long[] res = new long[arr.length];

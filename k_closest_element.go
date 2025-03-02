@@ -62,7 +62,6 @@ func findClosestElements(arr []int, k int, x int) []int {
 	}
 	return res.h
 }
-
 func findClosestElementsUsingSort(arr []int, k int, x int) []int {
 	slices.SortFunc[[]int](arr, func(a, b int) int {
 		amx := math.Abs(float64(a - x))
@@ -78,5 +77,28 @@ func findClosestElementsUsingSort(arr []int, k int, x int) []int {
 	})
 	res := arr[:k]
 	slices.Sort(res)
+
 	return res
+}
+
+type pointa struct {
+	x, y int
+	dis  float64
+}
+
+func kClosestUsingSort(points [][]int, k int) [][]int {
+	res := make([]pointa, len(points))
+	for i, v := range points {
+		res[i] = pointa{
+			x: v[0], y: v[1], dis: math.Sqrt(float64((v[0] * v[0]) + (v[1] * v[1]))),
+		}
+	}
+
+	slices.SortFunc(res, func(a, b pointa) int { return int((a.dis - b.dis) * 100) })
+	// fmt.Println(res)
+	ans := make([][]int, 0)
+	for _, v := range res[:k] {
+		ans = append(ans, []int{v.x, v.y})
+	}
+	return ans
 }
